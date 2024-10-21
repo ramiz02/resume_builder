@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ResumeForm from './components/ResumeForm';
+import ResumePreview from './components/ResumePreview';
+import { FormProvider }  from './components/FormContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <FormProvider>
+            <div className="min-h-screen flex flex-col">
+                <Header />
+                <main className="p-6 flex flex-col lg:flex-row justify-center space-y-6 lg:space-x-6 lg:space-y-0">
+                    <div className="form-container w-full lg:w-1/2">
+                        <ResumeForm />
+                    </div>
+                    <div className="preview-container w-full lg:w-1/2">
+                        <ResumePreview />
+                    </div>
+                </main>
+                <Footer />
+            </div>
+        </FormProvider>
+    );
 }
 
 export default App;
